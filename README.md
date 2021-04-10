@@ -25,12 +25,12 @@
 
 - 队列也是一种线性数据结构
 - 相比数组，队列对应的操作是数组的子集
-- 队列只能从一端入（对尾），一端出（对头），就像：排队 
+- 队列只能从一端入（对尾），一端出（对头），就像：排队
 - 时间复杂度：
   ```
-  int getSize();       O(1) 均摊 
-  boolean isEmpty();   O(n)
-  void enqueue(E e);   O(1)
-  E dequeue();         O(1)
+  int getSize();       O(1)  
+  boolean isEmpty();   O(1)
+  void enqueue(E);     O(1) 均摊
+  E dequeue();         O(n)
   E getFront();        O(1)
   ```
