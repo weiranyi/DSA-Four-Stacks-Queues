@@ -1,22 +1,22 @@
-package com.github.weiranyi.stacks;
+package com.github.weiranyi.queues;
 
 import com.github.weiranyi.entity.Array;
 
 /**
  * @author: https://github.com/weiranyi
- * @description
- * @date: 2021/4/10 8:19 下午
+ * @description 这是一个数组队列类
+ * @date: 2021/4/10 10:15 下午
  * @Version 1.0
  */
-public class ArrayStack<E> implements Stack<E> {
+public class ArrayQueue<E> implements Queues<E> {
     private Array<E> array;
 
-    // 指定内存空间容量
-    public ArrayStack(int capacity) {
+    // 在内存开辟的内存空间的数量
+    public ArrayQueue(int capacity) {
         array = new Array<>(capacity);
     }
 
-    public ArrayStack() {
+    public ArrayQueue() {
         array = new Array<>();
     }
 
@@ -30,39 +30,41 @@ public class ArrayStack<E> implements Stack<E> {
         return array.isEmpty();
     }
 
+    // 添加一个元素,想这个末尾添加一个元素
     @Override
-    public void push(E e) {
+    public void enqueue(E e) {
         array.addLast(e);
     }
 
+    // 从这个队列中拿出一个元素
     @Override
-    public E pop() {
-        return array.removeLast();
+    public E dequeue() {
+        return array.removeFirst();
     }
 
     @Override
-    public E peek() {
-        return array.getLast();
+    public E getFront() {
+        return array.getFirst();
     }
 
-    // 查看容量
     public int getCapacity() {
         return array.getCapacity();
     }
 
-
     @Override
     public String toString() {
         StringBuilder res = new StringBuilder();
-        res.append("Stack");
-        res.append('[');
+        res.append("Queue: ");
+        res.append("head [");
         for (int i = 0; i < array.getSize(); i++) {
             res.append(array.get(i));
             if (i != array.getSize() - 1) {
                 res.append(", ");
             }
         }
-        res.append("']'top");
+        res.append("] tail");
         return res.toString();
     }
+
+
 }
