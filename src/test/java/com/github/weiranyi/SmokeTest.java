@@ -1,5 +1,7 @@
 package com.github.weiranyi;
 
+import com.github.weiranyi.stacks.ArrayStack;
+import com.github.weiranyi.stacks.Solution;
 import org.junit.jupiter.api.Test;
 
 public class SmokeTest {
@@ -7,7 +9,7 @@ public class SmokeTest {
     public void test() {
         ArrayStack<Integer> stack = new ArrayStack<>();
 
-        for(int i = 0 ; i < 5 ; i ++){
+        for (int i = 0; i < 5; i++) {
             stack.push(i);
             System.out.println(stack);
         }

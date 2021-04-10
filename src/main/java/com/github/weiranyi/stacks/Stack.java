@@ -1,4 +1,4 @@
-package com.github.weiranyi;
+package com.github.weiranyi.stacks;
 
 /**
  * @author: https://github.com/weiranyi
@@ -8,8 +8,12 @@ package com.github.weiranyi;
  */
 public interface Stack<E> {
     int getSize(); // 返回int
+
     boolean isEmpty();
+
     void push(E e); //添加元素
+
     E pop(); // 取出元素
-    E peek();// 看栈顶元素
+
+    E peek(); // 看栈顶元素
 }
