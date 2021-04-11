@@ -34,8 +34,9 @@ public class Deque<E> {
 
     // 和基础队列实现类似
     public void addLast(E e) {
-        if (size == getCapacity())
+        if (size == getCapacity()) {
             resize(getCapacity() * 2);
+        }
         data[tail] = e;
         tail = (tail + 1) % data.length;
         size++;
@@ -43,8 +44,9 @@ public class Deque<E> {
 
     public void addFront(E e) {
 
-        if (size == getCapacity())
+        if (size == getCapacity()) {
             resize(getCapacity() * 2);
+        }
 
         // 我们首先需要确定添加新元素的索引位置front - 1
         // 如果 front == 0，新的位置是 data.length - 1 的位置
@@ -56,8 +58,9 @@ public class Deque<E> {
     // 和基础队列实现类似
     public E removeFront() {
 
-        if (isEmpty())
+        if (isEmpty()) {
             throw new IllegalArgumentException("Cannot dequeue from an empty queue.");
+        }
 
         E ret = data[front];
         data[front] = null;
@@ -70,39 +73,43 @@ public class Deque<E> {
 
     public E removeLast() {
 
-        if (isEmpty())
+        if (isEmpty()) {
             throw new IllegalArgumentException("Cannot dequeue from an empty queue.");
+        }
 
         // 计算删除掉队尾元素以后，新的 tail 位置
         tail = tail == 0 ? data.length - 1 : tail - 1;
         E ret = data[tail];
         data[tail] = null;
         size--;
-        if (getSize() == getCapacity() / 4 && getCapacity() / 2 != 0)
+        if (getSize() == getCapacity() / 4 && getCapacity() / 2 != 0) {
             resize(getCapacity() / 2);
+        }
         return ret;
     }
 
     private void resize(int newCapacity) {
         E[] newData = (E[]) new Object[newCapacity];
-        for (int i = 0; i < size; i++)
+        for (int i = 0; i < size; i++) {
             newData[i] = data[(front + i) % data.length];
+        }
         data = newData;
         front = 0;
         tail = size;
     }
 
     public E getFront() {
-        if (isEmpty())
+        if (isEmpty()) {
             throw new IllegalArgumentException("Queue is empty.");
+        }
         return data[front];
     }
 
     // 因为是双端队列，我们也有一个 getLast 的方法，来获取队尾元素的值
     public E getLast() {
-        if (isEmpty())
+        if (isEmpty()) {
             throw new IllegalArgumentException("Queue is empty.");
-
+        }
         // 因为 tail 指向的是队尾元素的下一个位置，我们需要计算一下真正队尾元素的索引
         int index = tail == 0 ? data.length - 1 : tail - 1;
         return data[index];
@@ -115,8 +122,9 @@ public class Deque<E> {
         res.append("front[");
         for (int i = 0; i < size; i++) {
             res.append(data[(i + front) % data.length]);
-            if (i != size - 1)
+            if (i != size - 1) {
                 res.append(",");
+            }
         }
         res.append("]tail");
         return res.toString();
