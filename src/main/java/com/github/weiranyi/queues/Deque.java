@@ -119,7 +119,7 @@ public class Deque<E> {
     @Override
     public String toString() {
         StringBuilder res = new StringBuilder();
-        res.append(String.format("Deque: capacity :%d, size:%d\n", getCapacity(), getSize()));
+        res.append(String.format("Deque: capacity :%d, size:%d", getCapacity(), getSize()));
         res.append("front[");
         for (int i = 0; i < size; i++) {
             res.append(data[(i + front) % data.length]);
