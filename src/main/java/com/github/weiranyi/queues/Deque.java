@@ -66,8 +66,9 @@ public class Deque<E> {
         data[front] = null;
         front = (front + 1) % data.length;
         size--;
-        if (getSize() == getCapacity() / 4 && getCapacity() / 2 != 0)
+        if (getSize() == getCapacity() / 4 && getCapacity() / 2 != 0) {
             resize(getCapacity() / 2);
+        }
         return ret;
     }
 
